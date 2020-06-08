@@ -237,6 +237,7 @@ export interface RouteProps {
   children?: React.ReactNode;
   element?: React.ReactElement | null;
   path?: string;
+  preload?: RoutePreloadFunction;
 }
 
 if (__DEV__) {
@@ -278,8 +279,8 @@ export function Router({
 }
 
 export interface RouterProps {
-  children?: React.ReactNode;
   action?: Action;
+  children?: React.ReactNode;
   location: Location;
   navigator: Navigator;
   pending?: boolean;
@@ -724,11 +725,11 @@ type RoutePreloadFunction = (
  * reasonable defaults.
  */
 export interface PartialRouteObject {
-  path?: string;
   caseSensitive?: boolean;
-  element?: React.ReactNode;
-  preload?: RoutePreloadFunction;
   children?: PartialRouteObject[];
+  element?: React.ReactNode;
+  path?: string;
+  preload?: RoutePreloadFunction;
 }
 
 /**
@@ -736,11 +737,11 @@ export interface PartialRouteObject {
  * organized in a tree-like structure.
  */
 export interface RouteObject {
-  path: string;
   caseSensitive: boolean;
-  element: React.ReactNode;
-  preload?: RoutePreloadFunction;
   children?: RouteObject[];
+  element: React.ReactNode;
+  path: string;
+  preload?: RoutePreloadFunction;
 }
 
 /**
