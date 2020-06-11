@@ -594,7 +594,6 @@ function App() {
 ```
 
 <a name="usesearchparams"></a>
-<a name="createsearchparams"></a>
 
 ### `useSearchParams`
 
@@ -649,5 +648,7 @@ function App() {
 > only for the [search portion](https://developer.mozilla.org/en-US/docs/Web/API/Location/search)
 > of the URL. Also note that the second arg to `setSearchParams` is
 > the same type as the second arg to `navigate`.
+
+<a name="createsearchparams"></a>
 
 A `createSearchParams(init: URLSearchParamsInit)` function is also exported that is essentially a thin wrapper around [`new URLSearchParams(init)`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams) that adds support for using objects with array values. This is the same function that `useSearchParams` uses internally for creating `URLSearchParams` objects from `URLSearchParamsInit` values.
