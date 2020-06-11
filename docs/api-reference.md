@@ -390,7 +390,7 @@ function App() {
 
 ### `<Prompt>`
 
-TODO
+A `<Prompt>` is the declarative version of [`usePrompt`](#useprompt).
 
 <a name="router"></a>
 
@@ -516,7 +516,11 @@ http.createServer(requestHandler).listen(3000);
 
 ### `useBlocker`
 
-TODO
+```tsx
+declare function useBlocker(blocker: Blocker, when = true): void;
+```
+
+`useBlocker` is a low-level hook that allows you to block navigation away from the current page, i.e. prevent the current location from changing. This is probably something you don't ever want to do unless you also display a confirmation dialog to the user to help them understand why their navigation attempt was blocked. In these cases, you probably want to use [`usePrompt`](#useprompt) or [`<Prompt>`](#prompt) instead.
 
 <a name="uselocation"></a>
 
@@ -605,6 +609,13 @@ function SignupForm() {
   // ...
 }
 ```
+
+`usePrompt` uses [`window.confirm`](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm) on the web and [the `Alert` module](https://reactnative.dev/docs/alert) on React Native to display native, accessible confirm dialogs.
+
+> [!Note:]
+>
+> If you need a more custom dialog box, you will have to use [`useBlocker`](#useblocker)
+> directly and handle accessibility issues yourself.
 
 <a name="useroutes"></a>
 <a name="partialrouteobject"></a>
