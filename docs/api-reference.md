@@ -506,6 +506,33 @@ function requestHandler(req, res) {
 http.createServer(requestHandler).listen(3000);
 ```
 
+<a name="uselocation"></a>
+
+### `useLocation`
+
+```tsx
+declare function useLocation(): Location;
+```
+
+Returns the current [`location`](#location) object. This can be useful if you'd like to perform some side effect whenever the current location changes.
+
+```tsx
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+
+function App() {
+  let location = useLocation();
+
+  React.useEffect(() => {
+    ga('send', 'pageview');
+  }, [location]);
+
+  return (
+    // ...
+  );
+}
+```
+
 <a name="usenavigate"></a>
 
 ### `useNavigate`
