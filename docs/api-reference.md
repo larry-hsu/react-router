@@ -61,7 +61,7 @@ React Router's navigation interfaces let you change the currently rendered page 
 
 Sometimes you need to confirm navigation before it actually happens. For example, if the user has entered some data into a form on the current page, you may want to prompt them to save the data before they navigate to a different page.
 
-- [`usePrompt` and `<Prompt>`](#useprompt-and-prompt) trigger a platform-native confirmation prompt when the user tries to navigate away from the current page
+- [`usePrompt`](#useprompt) and [`<Prompt>`](#prompt) trigger a platform-native confirmation prompt when the user tries to navigate away from the current page
 - [`useBlocker`](#useblocker) is a low-level interface that lets you keep the user on the same page and execute a function that will be called when they try to navigate away
 
 <a name="search-parameters"></a>
@@ -386,6 +386,12 @@ function App() {
 }
 ```
 
+<a name="prompt"></a>
+
+### `<Prompt>`
+
+TODO
+
 <a name="router"></a>
 
 ### `<Router>`
@@ -506,6 +512,12 @@ function requestHandler(req, res) {
 http.createServer(requestHandler).listen(3000);
 ```
 
+<a name="useblocker"></a>
+
+### `useBlocker`
+
+TODO
+
 <a name="uselocation"></a>
 
 ### `useLocation`
@@ -572,6 +584,27 @@ The `navigate` function has two signatures:
 
 - Either pass a `To` value (same type as `<Link to>`) with an optional second `{ replace, state }` arg or
 - Pass the delta you want to go in the history stack. For example, `navigate(-1)` is equivalent to hitting the back button.
+
+<a name="useprompt"></a>
+
+### `usePrompt`
+
+```tsx
+declare function usePrompt(message: string, when = true): void;
+```
+
+The `usePrompt` hook may be used to confirm navigation before the user navigates away from the current page. This is useful when someone has entered unsaved data into a form, and you'd like to prompt them before they accidentally leave or close the tab and lose their work.
+
+```tsx
+import React from 'react';
+import { usePrompt } from 'react-router-dom';
+
+function SignupForm() {
+  let [formData, setFormData] = React.useState(null);
+  usePrompt('Are you sure you want to leave?', formData != null);
+  // ...
+}
+```
 
 <a name="useroutes"></a>
 <a name="partialrouteobject"></a>
