@@ -316,7 +316,7 @@ interface NavLinkProps extends LinkProps {
 
 A `<NavLink>` is a special kind of [`<Link>`](#link) that knows whether or not it is "active". This is useful when building a navigation menu such as a breadcrumb or a set of tabs where you'd like to show which of them is currently selected.
 
-Both `<NavLink activeClassName>` and `<NavLink activeStyle>` are applied to the underlying `<Link>` when the route it links to is currently active.
+Both `<NavLink activeClassName>` and/or `<NavLink activeStyle>` are applied to the underlying `<Link>` when the route it links to is currently active.
 
 ```tsx
 import React from 'react';
