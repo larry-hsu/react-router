@@ -647,5 +647,6 @@ function App() {
 >
 > The `setSearchParams` function works like [`navigate`](#usenavigate), but
 > only for the [search portion](https://developer.mozilla.org/en-US/docs/Web/API/Location/search)
-> of the URL.
+> of the URL. Also note that the second arg to `setSearchParams` is
+> the same type as the second arg to `navigate`.
 
