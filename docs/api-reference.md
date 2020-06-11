@@ -650,4 +650,4 @@ function App() {
 > of the URL. Also note that the second arg to `setSearchParams` is
 > the same type as the second arg to `navigate`.
 
-A `createSearchParams(init)` function is also exported that is essentially a thin wrapper around [`new URLSearchParams(init)`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams) that adds support for objects with array values.
+A `createSearchParams(init)` function is also exported that is essentially a thin wrapper around [`new URLSearchParams(init)`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams) that adds support for using objects with array values.
