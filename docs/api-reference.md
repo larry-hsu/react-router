@@ -297,13 +297,52 @@ interface LinkProps extends TouchableHighlightProps {
 
 A `<Link>` is an element that lets the user navigate to another view by tapping it, similar to how `<a>` elements work in a web app. In `react-router-native`, a `<Link>` renders a `TouchableHighlight`.
 
-TODO
+TODO: example
 
 <a name="navlink"></a>
 
 ### `<NavLink>`
 
-TODO
+```tsx
+declare function NavLink(props: NavLinkProps): React.ReactElement;
+
+interface NavLinkProps extends LinkProps {
+  activeClassName?: string;
+  activeStyle?: object;
+  caseSensitive?: boolean;
+  end?: boolean;
+}
+```
+
+A `<NavLink>` is a special kind of [`<Link>`](#link) that knows whether or not it is "active". This is useful when building a navigation menu such as a breadcrumb or a set of tabs where you'd like to show which of them is currently selected.
+
+Both `<NavLink activeClassName>` and `<NavLink activeStyle>` are applied to the underlying `<Link>` when the route it links to is currently active.
+
+```tsx
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+function NavList() {
+  // This styling will be applied to a <NavLink> when the
+  // route that it links to is currently selected.
+  let activeStyle = {
+    textDecoration: 'underline'
+  };
+
+  return (
+    <nav>
+      <ul>
+        <li>
+          <NavLink to="messages" activeStyle={activeStyle}>Messages</NavLink>
+        </li>
+        <li>
+          <NavLink to="tasks" activeStyle={activeStyle}>Tasks</NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+}
+```
 
 <a name="navigate"></a>
 
