@@ -592,3 +592,60 @@ function App() {
   return element;
 }
 ```
+
+<a name="usesearchparams"></a>
+<a name="createsearchparams"></a>
+
+### `useSearchParams`
+
+```tsx
+declare function useSearchParams(defaultInit?: URLSearchParamsInit): [
+  URLSearchParams,
+  (
+    nextInit: URLSearchParamsInit,
+    navigateOptions?: { replace?: boolean; state?: State }
+  ) => void
+];
+
+type ParamKeyValuePair = [string, string];
+type URLSearchParamsInit =
+  | string
+  | ParamKeyValuePair[]
+  | Record<string, string | string[]>
+  | URLSearchParams;
+```
+
+The `useSearchParams` hook is used to read and modify the query string in the URL for the current location. Like React's own [`useState` hook](https://reactjs.org/docs/hooks-reference.html#usestate), `useSearchParams` returns an array of two values: the current location's [search params](https://developer.mozilla.org/en-US/docs/Web/API/URL/searchParams) and a function that may be used to update them.
+
+```tsx
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
+
+function App() {
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    // The serialize function here would be responsible for
+    // creating an object of { key: value } pairs from the
+    // fields in the form that make up the query.
+    let params = serializeFormQuery(event.target);
+    setSearchParams(params);
+  }
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        {/* ... */}
+      </form>
+    </div>
+  );
+}
+```
+
+> [!Note:]
+>
+> The `setSearchParams` function works like [`navigate`](#usenavigate), but
+> only for the [search portion](https://developer.mozilla.org/en-US/docs/Web/API/Location/search)
+> of the URL.
+
