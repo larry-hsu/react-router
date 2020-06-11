@@ -440,7 +440,7 @@ type RoutePreloadFunction = (
 
 `<Routes>` and `<Route>` are the primary ways to render something in React Router based on the current [`location`](#TODO). You can think about a `<Route>` kind of like an `if` statement; if its `path` matches the current URL, it renders its `element`!
 
-Whenever the location changes, `<Routes>` looks through all its `children` `<Route>` elements to find the best match and renders that branch of the UI. `<Route>` elements may be nested to indicate nested UI, which also correspond to nested URL paths.
+Whenever the location changes, `<Routes>` looks through all its `children` `<Route>` elements to find the best match and renders that branch of the UI. `<Route>` elements may be nested to indicate nested UI, which also correspond to nested URL paths. Parent routes render their child routes by rendering an [`<Outlet>`](#outlet).
 
 ```tsx
 <Routes>
@@ -452,9 +452,9 @@ Whenever the location changes, `<Routes>` looks through all its `children` `<Rou
 </Routes>
 ```
 
-`<Route element>` defaults to an [`<Outlet />`](#outlet). This means the route will still render its children even without an `element` prop, so you can nest route paths without nesting UI around the child routes.
+The default `<Route element>` is an [`<Outlet>`](#outlet). This means the route will still render its children even without an explicit `element` prop, so you can nest route paths without nesting UI around the child route elements.
 
-For example, in the following config the parent route renders an `<Outlet />` by default, so the child route will render without any surrounding UI. But the route paths will still nest.
+For example, in the following config the parent route renders an `<Outlet>` by default, so the child route will render without any surrounding UI. But the child route's path is `/users/:id` because it still builds on its parent.
 
 ```tsx
 <Route path="users">
